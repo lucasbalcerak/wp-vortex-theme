@@ -1,0 +1,1 @@
+{"version":3,"file":"./style-index.css","mappings":";;;AAAA;EACI;EACA;EACA;AACJ,C","sources":["webpack://vortex/./css/style.scss"],"sourcesContent":["html {\r\n    background-color: #FBF3D5;\r\n    height: 1000px;\r\n    border: solid black 2px;\r\n}"],"names":[],"sourceRoot":""}
