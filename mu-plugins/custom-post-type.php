@@ -31,7 +31,7 @@ function custom_post_type() {
         'show_in_rest' => true,
         'public' => true,
         'labels' => array(
-            'name' => 'Galleria',
+            'name' => 'Galeria',
             'add_new' => 'Dodaj zdjęcie',
             'edit_item' => 'Edytuj zdjęcie',
             'all_items' => 'Zdjęcia',

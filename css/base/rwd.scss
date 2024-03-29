@@ -1,0 +1,36 @@
+@mixin devices ($breakpoint) {
+    @if $breakpoint == desktop {
+        @media only screen and (max-width: 1000px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == mobile {
+        @media only screen and (max-width: 481px) {
+            @content;
+        }
+    }
+}
+
+@mixin keyframes ($name) {
+    @keyframes #{$name} {
+        @content
+    }
+}
+
+.mobile-none {
+    @include devices(mobile) {
+        display: none;
+    }
+    
+    @include devices(desktop) {
+        display: none;
+    }
+}
+
+.mobile-flex-direction-column {
+    @include devices(mobile) {
+        flex-direction: column;
+    }
+}
+

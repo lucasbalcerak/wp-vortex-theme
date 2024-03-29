@@ -1,0 +1,102 @@
+.fromRight {
+    animation: fromRight 1s forwards 2s, shrink 10s linear infinite ;
+}
+
+.fromLeft {
+    animation: fromLeft 1s forwards 2s, shrink 10s linear infinite ;
+}
+
+.fromBottom {
+    animation: fromBottom 1s forwards 2s, shrink 10s linear infinite ;
+}
+
+
+
+.logo {
+    animation: showLogo 2s forwards;
+}
+
+.border::before { 
+    top: 0; left: 0; 
+    animation: drawTop 0.5s forwards;
+}
+.border::after { 
+    top: 0; right: 0;
+    animation: drawRight 0.5s forwards 0.5s; 
+}
+.border .bottom { 
+    bottom: 0; right: -100%;
+    animation: drawBottom 0.5s forwards 1s;
+}
+.border .left { 
+    bottom: -100%; left: 0;
+    animation: drawLeft 0.5s forwards 1.5s;
+}
+.border-double::before { 
+    top: 0; left: 0;
+    animation: drawTop 2s forwards; 
+}
+.border-double::after {
+    top: 0; right: 0;
+    animation: drawRight 2s forwards; 
+}
+.border-double .bottom {
+    bottom: 0; right: -100%;
+    animation: drawBottom 2s forwards;
+}
+.border-double .left {
+    bottom: -100%; left: 0;
+    animation: drawLeft 2s forwards;
+}
+
+@keyframes drawTop {
+    to { width: 100%; }
+}
+
+@keyframes drawRight {
+    to { height: 100%; }
+}
+
+@keyframes drawBottom {
+    to { right: 0; }
+}
+
+@keyframes drawLeft {
+    to { bottom: 0 }
+}
+
+@keyframes showLogo {
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes fromRight {
+    to {
+        right: 0;
+    }
+}
+
+@keyframes fromLeft {
+    to {
+        left: 0;
+    }
+}
+
+@keyframes fromBottom {
+    to {
+        bottom: 0;
+    }
+}
+
+@keyframes shrink {
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+

@@ -1,0 +1,229 @@
+@mixin devices ($breakpoint) {
+    @if $breakpoint == desktop {
+        @media only screen and (max-width: 1000px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == mobile {
+        @media only screen and (max-width: 481px) {
+            @content;
+        }
+    }
+}
+
+@mixin keyframes ($name) {
+    @keyframes #{$name} {
+        @content
+    }
+}
+
+header {
+    margin-top: 50px;
+
+    @include devices(mobile) {
+        margin-top: 0px;
+    }
+
+    @include devices(desktop) {
+        margin-top: 20px;
+    }
+    
+}
+
+.margin-header-right {
+    margin-right: 20px;
+
+    @include devices(mobile) {
+        margin-right: 0px;
+    }
+
+    @include devices(desktop) {
+        margin-right: 0px;
+    }
+
+    
+}
+
+.margin-header-bottom {
+    margin-bottom: 20px;
+}
+
+.no-border {
+    border: none;
+}
+
+.slider {
+    h1 {
+        width: 80%;
+        font-family: $header-font;
+        font-size: 3em;
+        font-weight: 300;
+        text-align: center;
+        text-transform: uppercase;
+        
+        @include devices(mobile) {
+            font-size: 2em;
+        }
+
+        @include devices(desktop) {
+            font-size: 2em;
+        }
+
+
+    
+    }
+
+    :first-child {
+        opacity: 0;
+    }
+}
+
+// gallery setup
+.box-animation {
+    position: relative;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: 5px;
+    overflow: hidden;
+}
+
+.photo-animation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: centert;
+}
+
+// photo animation
+.bg-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: opacity 1s ease-in-out;
+  }
+  
+.bg-layer:first-child {
+    z-index: 1;
+}
+  
+.bg-layer:last-child {
+    z-index: 2;
+}
+
+.on-bottom {
+    opacity: 0;
+}
+
+// Boxes
+.square-item {
+    height: 460px;
+    width: 460px;
+
+    @include devices(mobile) {
+        height: 350px;
+        width: 350px;
+    }
+
+    @include devices(desktop) {
+        height: 350px;
+        width: 350px;
+    }
+    
+}
+
+.logo {
+    background-position: bottom -20px center;  
+    opacity: 0;
+
+    @include devices(mobile) {
+        background-size: contain;
+        background-position: bottom 0px center;
+        height: 350px;
+    }
+
+    @include devices(desktop) {
+        background-size: contain;
+        background-position: bottom 0px center;
+        height: 350px;
+    }
+}
+
+.rectangle-item {
+    height: 240px;
+    width: 460px;
+
+    @include devices(mobile) {
+        width: 350px;
+        height: 120px;
+    }
+
+    @include devices(desktop) {
+        width: 400px;
+        height: 80px;
+    }
+}
+
+.wide-item {
+    height: 720px;
+    width: 300px;
+}
+
+.wide-item-horizontal {
+    height: 50px;
+    width: 1260px;
+}
+
+// ANIMATIONS SETUP FOR BORDER
+
+//position
+.border,
+.border-double {
+    position: relative;
+    overflow: hidden;
+}
+
+// draw border
+.border::before,
+.border::after,
+.border .bottom,
+.border .left,
+.border-double::before,
+.border-double::after,
+.border-double .bottom,
+.border-double .left {
+    content: '';
+    position: absolute;
+    background: black;
+}
+
+// top
+.border::before,
+.border-double::before {
+    width: 0;
+    height: 2px;
+}
+
+// right
+.border::after,
+.border-double::after {
+    width: 2px;
+    height: 0;
+}
+
+// bottom
+.border .bottom,
+.border-double .bottom {
+    width: 100%;
+    height: 2px;
+}
+
+// left
+.border .left,
+.border-double .left {
+    width: 2px;
+    height: 100%;
+}
+

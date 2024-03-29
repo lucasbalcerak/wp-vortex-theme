@@ -10,8 +10,206 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.scss */ "./css/style.scss");
+/* harmony import */ var _modules_product_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/product-slider */ "./src/modules/product-slider.js");
+/* harmony import */ var _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/setOffset */ "./src/modules/setOffset.js");
+/* harmony import */ var _modules_headerGallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/headerGallery */ "./src/modules/headerGallery.js");
 
+
+// Modules
+
+
+
+
+const slider = new _modules_product_slider__WEBPACK_IMPORTED_MODULE_1__["default"]('.slider', 2000);
+const leftOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromLeft', 'left');
+const rightOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromBottom', 'bottom');
+const bottomOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromRight', 'right');
+const header_gallery = new _modules_headerGallery__WEBPACK_IMPORTED_MODULE_3__["default"]();
 console.log("Działam");
+
+/***/ }),
+
+/***/ "./src/modules/headerGallery.js":
+/*!**************************************!*\
+  !*** ./src/modules/headerGallery.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+class headerGallery {
+  constructor() {
+    this.divs = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.photo-animation');
+    this.imageUrls = this.getPhotoData();
+    this.currentIndex = 0;
+    this.initGallery();
+    this.rotateGallery();
+    this.rotateGalleryPhoto();
+    this.upperDivs = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.on-top');
+  }
+  getPhotoData() {
+    let imageUrls = new Array();
+    if (typeof photoData !== 'undefined' && photoData.urls.length > 0) {
+      photoData.urls.forEach(function (url) {
+        imageUrls.push(url);
+      });
+    }
+    return imageUrls;
+  }
+  initGallery() {
+    this.divs.each((index, div) => {
+      const imageUrl = this.imageUrls[this.currentIndex];
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).css({
+        'background-image': `url('${imageUrl}')`
+      });
+      this.currentIndex++;
+    });
+  }
+  rotateGallery() {
+    let counter = 1;
+    setInterval(() => {
+      this.divs.each((index, div) => {
+        const imageUrl = this.imageUrls[this.currentIndex];
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).hasClass('on-bottom')) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).removeClass('on-bottom');
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).addClass('on-bottom');
+        }
+      });
+    }, 5000);
+  }
+  rotateGalleryPhoto() {
+    setTimeout(() => {
+      setInterval(() => {
+        this.divs.each((index, div) => {
+          const imageUrl = this.imageUrls[this.currentIndex];
+          if ((index + 1) % 2 == 0) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).css({
+              'background-image': `url('${imageUrl}')`
+            });
+            this.currentIndex++;
+            if (this.currentIndex >= this.imageUrls.length) {
+              this.currentIndex = 0;
+            }
+          }
+        });
+      }, 10000);
+    }, 5000);
+    setInterval(() => {
+      this.divs.each((index, div) => {
+        const imageUrl = this.imageUrls[this.currentIndex];
+        if ((index + 1) % 2 !== 0) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(div).css({
+            'background-image': `url('${imageUrl}')`
+          });
+          this.currentIndex++;
+          if (this.currentIndex >= this.imageUrls.length) {
+            this.currentIndex = 0;
+          }
+        }
+      });
+    }, 10000);
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (headerGallery);
+
+/***/ }),
+
+/***/ "./src/modules/product-slider.js":
+/*!***************************************!*\
+  !*** ./src/modules/product-slider.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+class Slider {
+  constructor(selector, interval) {
+    this.$box = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.rectangle-item');
+    this.$slider = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selector);
+    this.$slides = this.$slider.children();
+    this.currentSlide = 0;
+    this.interval = interval;
+    this.sliderHeight = this.$slider.height();
+    this.numberOfSlides = this.$slides.length;
+    this.topGapStart = `${(this.$box.height() - this.$slides.height()) / 2}px`;
+    this.initSlider();
+  }
+  initSlider() {
+    this.$slider.css('position', 'relative');
+    this.$slides.css({
+      'position': 'absolute'
+    }).hide();
+    this.$slides.first().show().css('top', `${this.topGapStart}`);
+    this.startSlider();
+  }
+  startSlider() {
+    setInterval(() => {
+      const $currentSlide = this.$slides.eq(this.currentSlide);
+      let nextSlideIndex = (this.currentSlide + 1) % this.numberOfSlides;
+      const $nextSlide = this.$slides.eq(nextSlideIndex);
+      let topGap = `${(this.$box.height() - $nextSlide.height()) / 2}px`;
+      $nextSlide.css('top', `${this.sliderHeight}px`).show();
+      $currentSlide.animate({
+        'top': `-${this.sliderHeight}px`
+      }, 1000, function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hide();
+      });
+      $nextSlide.animate({
+        'top': `${topGap}`
+      }, 1000);
+      this.currentSlide = nextSlideIndex;
+    }, this.interval);
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Slider);
+
+/***/ }),
+
+/***/ "./src/modules/setOffset.js":
+/*!**********************************!*\
+  !*** ./src/modules/setOffset.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+class setOffset {
+  constructor(selector, $side) {
+    this.$divToAnimate = jquery__WEBPACK_IMPORTED_MODULE_0___default()(selector);
+    this.side = $side;
+    this.width = 1.1 * this.$divToAnimate.width();
+    this.height = 1.1 * this.$divToAnimate.height();
+    this.initOffset();
+  }
+  initOffset() {
+    if (this.side == 'bottom' || this.side == 'top') {
+      console.log(`-${this.height}px`);
+      this.$divToAnimate.css(this.side, `-${this.height}px`);
+    } else if (this.side == 'left' || this.side == 'right') {
+      console.log(`-${this.width}px`);
+      this.$divToAnimate.css(this.side, `-${this.width}px`);
+    } else {
+      console.log('side should be top, bottom, left or right');
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (setOffset);
 
 /***/ }),
 
@@ -24,6 +222,16 @@ console.log("Działam");
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "jquery":
+/*!*************************!*\
+  !*** external "jQuery" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = window["jQuery"];
 
 /***/ })
 
@@ -86,6 +294,30 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	
