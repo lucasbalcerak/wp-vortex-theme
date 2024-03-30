@@ -231,6 +231,71 @@ header {
   height: 100%;
 }
 
+.about-us {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  font-size: 1.2em;
+}
+
+.text-paragraph {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+@media only screen and (max-width: 481px) {
+  .text-paragraph {
+    width: 75%;
+    text-align: left;
+  }
+}
+
+.text-paragraph::after,
+.text-paragraph::before {
+  content: "";
+  position: absolute;
+  background: black;
+}
+
+.text-paragraph::after {
+  left: -20px;
+  top: -10px;
+  width: 50%;
+  height: 2px;
+}
+
+.text-paragraph:nth-child(2)::after {
+  left: auto;
+  top: auto;
+  right: -20px;
+  bottom: -10px;
+}
+
+.text-paragraph:nth-child(3)::after {
+  top: auto;
+  bottom: -10px;
+}
+
+.text-paragraph::before {
+  left: -20px;
+  top: -10px;
+  width: 2px;
+  height: 50%;
+}
+
+.text-paragraph:nth-child(2)::before {
+  left: auto;
+  top: auto;
+  right: -20px;
+  bottom: -10px;
+}
+
+.text-paragraph:nth-child(3)::before {
+  top: auto;
+  bottom: -10px;
+}
+
 .fromRight {
   animation: fromRight 1s forwards 2s, shrink 10s linear infinite;
 }
@@ -241,6 +306,10 @@ header {
 
 .fromBottom {
   animation: fromBottom 1s forwards 2s, shrink 10s linear infinite;
+}
+
+.slider :first-child {
+  animation: showLogo 2s forwards;
 }
 
 .logo {

@@ -25,7 +25,6 @@ const leftOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"
 const rightOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromBottom', 'bottom');
 const bottomOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromRight', 'right');
 const header_gallery = new _modules_headerGallery__WEBPACK_IMPORTED_MODULE_3__["default"]();
-console.log("Działam");
 
 /***/ }),
 
@@ -199,10 +198,8 @@ class setOffset {
   }
   initOffset() {
     if (this.side == 'bottom' || this.side == 'top') {
-      console.log(`-${this.height}px`);
       this.$divToAnimate.css(this.side, `-${this.height}px`);
     } else if (this.side == 'left' || this.side == 'right') {
-      console.log(`-${this.width}px`);
       this.$divToAnimate.css(this.side, `-${this.width}px`);
     } else {
       console.log('side should be top, bottom, left or right');

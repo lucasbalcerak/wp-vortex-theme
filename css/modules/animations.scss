@@ -10,7 +10,12 @@
     animation: fromBottom 1s forwards 2s, shrink 10s linear infinite ;
 }
 
+.slider {
 
+    :first-child {
+        animation: showLogo 2s forwards;
+    }
+}
 
 .logo {
     animation: showLogo 2s forwards;

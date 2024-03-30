@@ -12,10 +12,8 @@ class setOffset {
 
     initOffset() {
         if(this.side == 'bottom' || this.side == 'top') {
-            console.log(`-${this.height}px`);
             this.$divToAnimate.css(this.side, `-${this.height}px`);    
         } else if(this.side == 'left' || this.side == 'right'){
-            console.log(`-${this.width}px`);
             this.$divToAnimate.css(this.side, `-${this.width}px`);
         } else {
             console.log('side should be top, bottom, left or right');

@@ -75,6 +75,24 @@
         <div class="left"></div>
         <div class="bottom"></div>
     </div>
+    <section class="about-us container flex-container-column">
+        <?php
+            $aboutUsPost = new WP_Query( array(
+                'post_type' => 'about-us',
+                'posts_per_page' => 3,
+            ));
+
+            while($aboutUsPost->have_posts()){
+                $aboutUsPost->the_post();
+            ?>
+                <div class="text-paragraph">
+                    <?php echo get_the_content(); ?>
+                </div>
+
+            <?php        
+            }
+        ?>
+    </section>
 <?php
     get_footer();
 ?>

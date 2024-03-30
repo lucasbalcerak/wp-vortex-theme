@@ -6,7 +6,7 @@ Przed użyciem theme
 
 Ważne informacje:
 1. Posty O nas powienien zawierać tylko jeden post. Jeżeli jest ich więcej używany będzie tylko ostatni.
-2. Posty Produkty powinny zawierać tylko tytuł, reszta nie jest wyśiwetlana. 
+2. O nas każdy post to jeden paragraf tekstu. Theme wyświetla tylko 3. NIE TWOŻYĆ WIĘCEJ !!!
 
 --ENGLISH VERSION--
 
@@ -18,4 +18,4 @@ Things to do before using the theme:
 Important things:
 
 1. Custom post type About-us should have only one post, if it there are more, only the last one will be used
-2. Custom post type Products should have only a title. The content will not be displayed.
+2. Every about us post is one paragrpah. Theme display only 3 posts. DO NOT CREAT MORE !!!

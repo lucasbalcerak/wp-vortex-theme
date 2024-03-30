@@ -11,4 +11,4 @@ const leftOffset = new setOffset('.fromLeft', 'left');
 const rightOffset = new setOffset('.fromBottom', 'bottom');
 const bottomOffset = new setOffset('.fromRight', 'right');
 const header_gallery = new headerGallery();
-console.log("Działam");
+
