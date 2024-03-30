@@ -296,6 +296,46 @@ header {
   bottom: -10px;
 }
 
+.photo {
+  width: 350px;
+  height: 350px;
+  border: 2px solid black;
+}
+
+.photo-image {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  margin: 5px;
+  background-position: center;
+  background-size: cover;
+}
+
+.photo-div {
+  margin-right: 20px;
+  margin-bottom: 50px;
+}
+@media only screen and (max-width: 481px) {
+  .photo-div {
+    margin-right: 0;
+  }
+}
+
+.gallery-category {
+  width: 100%;
+  height: 50px;
+  font-family: "Madimi One", sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 20px;
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 481px) {
+  .gallery-row {
+    flex-direction: column;
+  }
+}
+
 .fromRight {
   animation: fromRight 1s forwards 2s, shrink 10s linear infinite;
 }

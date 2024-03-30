@@ -1,0 +1,37 @@
+.photo {
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+}
+
+.photo-image {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: 5px;    
+    background-position: center;
+    background-size: cover;
+}
+
+.photo-div {
+    margin-right: 20px;
+    margin-bottom: 50px;
+    @include devices(mobile) {
+       margin-right: 0; 
+    }
+}
+
+.gallery-category {
+    width: 100%;
+    height: 50px;
+    font-family: $header-font;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+.gallery-row {
+    @include devices(mobile) {
+        flex-direction: column; 
+    }
+}

@@ -60,6 +60,31 @@ function get_random_photos_urls() {
     return $photoUrls;
 }
 
+function get_first_photo_gallery($products) {
+    $gallery = [];
+
+    foreach($products as $product) {
+        $firstPhoto = new WP_Query(array(
+            'post_type' => 'photo-gallery',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'category',
+                    'value' => $product,
+                    'compare' => '=' 
+                ),
+            ),
+        ));
+
+        while($firstPhoto->have_posts()){
+            $firstPhoto->the_post();
+            $gallery[$product] = get_field_object('image')['value'];
+        }
+    }
+
+    return $gallery;
+}
+
 function loadFiles() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('main-site-js', get_theme_file_uri('/build/index.js'), array(), '1.0', true);
