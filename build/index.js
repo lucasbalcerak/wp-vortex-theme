@@ -383,7 +383,7 @@ module.exports = window["jQuery"];
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkvortex"] = globalThis["webpackChunkvortex"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkwp_scripts"] = globalThis["webpackChunkwp_scripts"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

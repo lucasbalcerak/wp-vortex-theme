@@ -335,6 +335,11 @@ header {
     flex-direction: column;
   }
 }
+@media only screen and (max-width: 1000px) {
+  .gallery-row {
+    flex-direction: column;
+  }
+}
 
 .fromRight {
   animation: fromRight 1s forwards 2s, shrink 10s linear infinite;

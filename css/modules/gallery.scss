@@ -34,4 +34,8 @@
     @include devices(mobile) {
         flex-direction: column; 
     }
+
+    @include devices(desktop) {
+        flex-direction: column; 
+    }
 }
