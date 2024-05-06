@@ -1,0 +1,28 @@
+.contact {
+    margin-top: 50px;
+}
+
+.map {
+    border: $border;
+    padding: 5px;
+    margin-bottom: 50px;
+}
+
+.contact-info {
+    width: 415px;
+    font-size: 1.5em;
+    
+    i{
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    p {
+        padding-left: 20px;
+        padding: 10px;
+    }
+}
+
+.test {
+    border: $border;
+}

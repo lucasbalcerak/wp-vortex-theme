@@ -14,15 +14,15 @@ function custom_post_type() {
         'menu_icon' => 'dashicons-megaphone'
     ));
 
-    register_post_type('Products', array(
+    register_post_type('Contact', array(
         'show_in_rest' => true,
         'public' => true,
         'labels' => array(
-            'name' => 'Produkty',
-            'add_new' => 'Dodaj Produkt',
-            'edit_item' => 'Edytuj Produkt',
-            'all_items' => 'Produkty',
-            'singular_name' => 'Produkt'
+            'name' => 'Kontakt',
+            'add_new' => 'Dodaj Kontakt',
+            'edit_item' => 'Edytuj Kontakt',
+            'all_items' => 'Kontakty',
+            'singular_name' => 'Kontakt'
         ),
         'menu_icon' => 'dashicons-list-view'
     ));
