@@ -10,6 +10,9 @@ get_header();
     $photosUrls = get_random_photos_urls();
     $gallery = get_first_photo_gallery($productsArr);
 
+    $polishChars     = ['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ż', 'ź', 'Ą', 'Ć', 'Ę', 'Ł', 'Ń', 'Ó', 'Ś', 'Ż', 'Ź'];
+    $replacementChars = ['a', 'c', 'e', 'l', 'n', 'o', 's', 'z', 'z', 'A', 'C', 'E', 'L', 'N', 'O', 'S', 'Z', 'Z'];
+
     ?>
     <header class="container flex-container margin-header-bottom">
         <div class="flex-container-column flex-item margin-header-right">
@@ -103,7 +106,10 @@ get_header();
                             </div>
                         </div>
                         <div class="gallery-category flex-container">
-                            <?php echo $product; ?>
+                            <a 
+                                href="../vortex/<?php echo strtolower(str_replace(" ", "-", str_replace($polishChars, $replacementChars, $product))); ?>">
+                                <?php echo $product; ?>
+                            </a>
                         </div>
                     </div>
                     <?php
@@ -128,7 +134,10 @@ get_header();
                         </div>
                     </div>
                     <div class="gallery-category flex-container">
-                        <?php echo $product; ?>
+                        <a 
+                        href="../vortex/<?php echo strtolower(str_replace(" ", "-", str_replace($polishChars, $replacementChars, $product))); ?>">
+                            <?php echo $product; ?>
+                        </a>
                     </div>
                 </div>
                 <?php
@@ -141,8 +150,7 @@ get_header();
         <div>
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.0288838503175!2d21.10980452242911!3d52.60524876395954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471e94b0603abfd1%3A0x93c263a0f4c1eb31!2sVortex!5e0!3m2!1spl!2spl!4v1714996859782!5m2!1spl!2spl" 
-                    width="400" 
-                    height="400" 
+                    class="google-map"
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 

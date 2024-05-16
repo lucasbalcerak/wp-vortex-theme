@@ -8,6 +8,16 @@
     margin-bottom: 50px;
 }
 
+.google-map {
+    width: 400px;
+    height: 400px;
+
+    @include devices(mobile) {
+        width: 350px;
+        height: 350px;
+    }
+}
+
 .contact-info {
     width: 415px;
     font-size: 1.5em;
@@ -20,6 +30,10 @@
     p {
         padding-left: 20px;
         padding: 10px;
+    }
+
+    @include devices(mobile) {
+        width: 365px;
     }
 }
 

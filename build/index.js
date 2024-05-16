@@ -13,9 +13,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_product_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/product-slider */ "./src/modules/product-slider.js");
 /* harmony import */ var _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/setOffset */ "./src/modules/setOffset.js");
 /* harmony import */ var _modules_headerGallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/headerGallery */ "./src/modules/headerGallery.js");
+/* harmony import */ var _modules_gallery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/gallery */ "./src/modules/gallery.js");
 
 
 // Modules
+
 
 
 
@@ -25,6 +27,68 @@ const leftOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"
 const rightOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromBottom', 'bottom');
 const bottomOffset = new _modules_setOffset__WEBPACK_IMPORTED_MODULE_2__["default"]('.fromRight', 'right');
 const header_gallery = new _modules_headerGallery__WEBPACK_IMPORTED_MODULE_3__["default"]();
+const image_Zoom = new _modules_gallery__WEBPACK_IMPORTED_MODULE_4__["default"]('.image');
+
+/***/ }),
+
+/***/ "./src/modules/gallery.js":
+/*!********************************!*\
+  !*** ./src/modules/gallery.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+class imageZoom {
+  constructor(selector) {
+    this.selector = selector;
+    this.fullGallery = ".full-gallery";
+    this.close = "#cross";
+    this.fullImage = ".full-image";
+    this.next = "#next";
+    this.prev = "#prev";
+    this.photo = "";
+    this.init();
+  }
+  init() {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.selector).on('click', event => this.toggleZoom(event));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.close).on('click', event => this.toggleZoom(event));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.next).on('click', event => this.nextImage(event));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.prev).on('click', event => this.prevImage(event));
+  }
+  toggleZoom() {
+    this.photo = jquery__WEBPACK_IMPORTED_MODULE_0___default()(event.target).attr('src');
+    console.log(this.photo);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.fullGallery).toggleClass('hidden');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.fullImage).attr('src', this.photo);
+  }
+  nextImage() {
+    let currentImgIndex = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img[src="' + this.photo + '"]').parent().index();
+    let nextImgIndex = currentImgIndex + 1;
+    if (nextImgIndex >= jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img').length) {
+      nextImgIndex = 0;
+    }
+    let nextImage = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img').eq(nextImgIndex).attr('src');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.fullImage).attr('src', nextImage);
+    this.photo = nextImage;
+  }
+  prevImage() {
+    let currentImgIndex = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img[src="' + this.photo + '"]').parent().index();
+    let prevImgIndex = currentImgIndex - 1;
+    if (prevImgIndex < 0) {
+      prevImgIndex = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img').length - 1;
+    }
+    let prevImage = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.image-container img').eq(prevImgIndex).attr('src');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.fullImage).attr('src', prevImage);
+    this.photo = prevImage;
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imageZoom);
 
 /***/ }),
 
