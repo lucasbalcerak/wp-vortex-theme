@@ -3,10 +3,34 @@
 ?>
 
 <body>
+    <?php
+        $productsArr = ratioChoicesName('photo-gallery', 'category');
+    ?>
     <div class="container flex-container title">
         <h1>
             <?php echo get_the_title() ?>
         </h1>
+    </div>
+    <div class="container flex-container">
+        <a  
+            class="flex-container menu-link"
+            href="<?php echo get_site_url()?>">
+            Home
+        </a>
+
+        <?php
+            foreach($productsArr as $product) {
+                if($product != get_the_title()) {
+                ?>
+                    <a  
+                    class="flex-container menu-link"
+                    href="<?php echo get_site_url() . "/" . $product?>">
+                    <?php echo $product ?>
+                </a>
+                <?php
+                }
+            }
+        ?>
     </div>
     <section class="container flex-container image-gallery">
         <?php 

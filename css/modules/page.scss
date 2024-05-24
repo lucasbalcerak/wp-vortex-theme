@@ -6,9 +6,23 @@
     margin-top: 50px;
 }
 
+.menu-link {
+    color: $black;
+    border: $border;
+    width: 250px;
+    height: 50px;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+
 .image-gallery {
-    margin-top: 50px;
-    justify-content: flex-start;
+    margin-top: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .image-container {
